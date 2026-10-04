@@ -321,6 +321,120 @@ button{font:inherit}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
+
+
+   /* ── Mobile apps section ── */
+.mobile{background:var(--ink);color:#fff;position:relative;overflow:hidden;isolation:isolate}
+.mobile::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(700px 420px at 20% 10%,rgba(31,88,132,.5),transparent 70%),radial-gradient(640px 400px at 90% 100%,rgba(229,72,58,.16),transparent 70%)}
+.mobile .sec-head h2{color:#fff}
+.mobile .sec-head p{color:var(--on-dark)}
+.mb-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:64px}
+.mb-card{display:flex;flex-direction:column;align-items:center;text-align:center}
+.mb-tag{font:700 12px var(--body);letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;border-radius:999px;border:1px solid}
+.mb-card.cz .mb-tag{color:#7FE0AB;border-color:rgba(47,182,110,.5);background:rgba(47,182,110,.1)}
+.mb-card.rs .mb-tag{color:#FF9B90;border-color:rgba(229,72,58,.5);background:rgba(229,72,58,.1)}
+.mb-card h3{font:800 clamp(2rem,3.4vw,2.8rem)/1 var(--display);margin:16px 0 10px}
+.mb-card>p{color:var(--on-dark);max-width:40ch;font-size:16.5px}
+.mb-list{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:9px;text-align:left;font-size:15px;color:var(--on-dark)}
+.mb-list li{display:flex;gap:10px;align-items:flex-start}
+.mb-list svg{color:var(--green);flex:none;margin-top:4px}
+.mb-dl{margin-top:26px;width:100%;max-width:340px}
+.mb-dl .btn{width:100%}
+.mb-meta{margin-top:10px;font-size:13px;color:var(--on-dark-2)}
+.mb-sha{margin-top:8px;font:500 11px/1.4 ui-monospace,Consolas,monospace;color:var(--on-dark-2);word-break:break-all}
+ 
+/* phone */
+.phone-wrap{position:relative;margin-bottom:36px;animation:float 6s ease-in-out infinite}
+.mb-card.rs .phone-wrap{animation-delay:-3s}
+.phone-wrap::after{content:"";position:absolute;left:12%;right:12%;bottom:-26px;height:22px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.55),transparent);animation:shadow 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-14px)}}
+@keyframes shadow{50%{transform:scale(.85);opacity:.6}}
+.phone{position:relative;width:260px;height:520px;border-radius:40px;background:#050D16;border:9px solid #1C3248;overflow:hidden;box-shadow:0 50px 90px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.08),inset 0 0 0 1px rgba(255,255,255,.05);text-align:left}
+.phone::before{content:"";position:absolute;top:8px;left:50%;width:70px;height:18px;margin-left:-35px;border-radius:12px;background:#050D16;z-index:9}
+.scr{position:absolute;inset:0;font-family:var(--body)}
+/* citizen screen */
+.cz-scr{background:#F0F4F8;color:#1A2E3B}
+.cz-bar{height:78px;background:#153650;padding:34px 14px 0;display:flex;align-items:center;gap:8px;font:900 14px var(--body);letter-spacing:.12em}
+.cz-bar i{width:20px;height:20px;border-radius:6px;background:rgba(255,255,255,.18);display:grid;place-items:center;font-style:normal;font-size:11px}
+.cz-hero{background:linear-gradient(135deg,#153650,#1A4A6B);padding:2px 14px 16px}
+.cz-hero b{display:block;font:700 15px var(--body)}
+.cz-hero small{font-size:9.5px;color:#B9C8D6}
+.cz-hero small::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#2ECC71;margin-right:5px}
+.cz-body{padding:12px}
+.cz-btn{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#E74C3C,#C0392B);color:#fff;border-radius:14px;padding:15px 12px;box-shadow:0 10px 20px -8px rgba(231,76,60,.7);animation:pulseBtn 2.4s ease-in-out infinite}
+.cz-btn .ic{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;font-size:16px;flex:none}
+.cz-btn b{display:block;font:900 12px var(--body);letter-spacing:.06em}
+.cz-btn small{font-size:8.5px;opacity:.8}
+@keyframes pulseBtn{50%{transform:scale(1.04)}}
+.cz-q{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:12px}
+.cz-q span{border-radius:10px;padding:9px 0 7px;text-align:center;font:700 8px/1.2 var(--body)}
+.cz-q em{display:block;font-style:normal;font-size:15px;margin-bottom:3px}
+.cz-hot{margin-top:12px;background:#fff;border-radius:12px;padding:10px;display:flex;align-items:center;gap:9px;box-shadow:0 4px 10px -6px rgba(0,0,0,.3)}
+.cz-hot .ic{width:28px;height:28px;border-radius:8px;background:rgba(21,54,80,.1);display:grid;place-items:center;font-size:13px}
+.cz-hot b{display:block;font:700 10.5px var(--body)}
+.cz-hot small{font-size:9px;color:#8A9DB0}
+.cz-hot .call{margin-left:auto;font:700 9px var(--body);color:#153650;border:1px solid rgba(21,54,80,.3);padding:4px 9px;border-radius:99px}
+.cz-tip{margin-top:12px;background:linear-gradient(90deg,#1A4A6B,#153650);color:#fff;border-radius:12px;padding:10px;font-size:9.5px;line-height:1.4;position:relative;height:50px}
+.cz-tip span{position:absolute;inset:10px;opacity:0;animation:tip 9s infinite}
+.cz-tip span:nth-child(2){animation-delay:3s}.cz-tip span:nth-child(3){animation-delay:6s}
+.cz-tip b{display:block;color:#FBBF24;font:900 7.5px var(--body);letter-spacing:.14em;margin-bottom:2px}
+@keyframes tip{0%{opacity:0;transform:translateY(5px)}6%,30%{opacity:1;transform:none}36%,100%{opacity:0}}
+.cz-toast{position:absolute;left:12px;right:12px;bottom:16px;background:#27AE60;color:#fff;border-radius:11px;padding:10px 12px;font:600 10.5px var(--body);display:flex;gap:8px;align-items:center;box-shadow:0 12px 24px -10px rgba(0,0,0,.5);animation:toast 9s infinite}
+@keyframes toast{0%,52%{opacity:0;transform:translateY(24px)}58%,78%{opacity:1;transform:none}84%,100%{opacity:0;transform:translateY(24px)}}
+/* responder screen */
+.rs-scr{background:#0A1929;color:#fff}
+.rs-head{margin-top:0;padding:34px 12px 11px;background:#0F2338;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:9px}
+.rs-av{width:32px;height:32px;border-radius:50%;background:rgba(231,76,60,.14);border:1.5px solid rgba(231,76,60,.6);display:grid;place-items:center;font-size:14px;animation:ring 1.4s ease-in-out infinite alternate}
+@keyframes ring{to{box-shadow:0 0 0 5px rgba(231,76,60,.12)}}
+.rs-head b{display:block;font-size:11.5px}
+.rs-head small{font:600 8.5px var(--body);color:#E74C3C}
+.rs-on{margin-left:auto;font:700 7.5px var(--body);color:#69F0AE;border:1px solid rgba(105,240,174,.3);background:rgba(27,94,32,.5);padding:3px 7px;border-radius:7px}
+.rs-stand{position:absolute;inset:78px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;animation:stand 9s infinite}
+@keyframes stand{0%,22%{opacity:1}30%,92%{opacity:0}100%{opacity:1}}
+.rs-orb{position:relative;width:78px;height:78px;border-radius:50%;background:rgba(231,76,60,.1);border:2px solid rgba(231,76,60,.4);display:grid;place-items:center;font-size:32px}
+.rs-orb::before,.rs-orb::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:1.5px solid rgba(231,76,60,.4);animation:orb 2.4s ease-out infinite}
+.rs-orb::after{animation-delay:1.2s}
+@keyframes orb{to{transform:scale(2);opacity:0}}
+.rs-stand b{font-size:15px}
+.rs-stand small{font-size:9.5px;color:rgba(255,255,255,.4);text-align:center;line-height:1.5}
+.rs-stand em{font:600 9px var(--body);font-style:normal;color:#69F0AE;border:1px solid rgba(46,125,50,.6);background:rgba(27,94,32,.25);padding:5px 11px;border-radius:99px}
+.rs-flow{position:absolute;inset:78px 0 0;opacity:0;animation:flow 9s infinite}
+@keyframes flow{0%,24%{opacity:0}30%,88%{opacity:1}94%,100%{opacity:0}}
+.rs-ban{padding:8px 12px;background:rgba(231,76,60,.08);border-bottom:1px solid rgba(231,76,60,.2);font:900 8px var(--body);letter-spacing:.08em;color:#E74C3C;display:flex;align-items:center;gap:7px}
+.rs-ban i{width:7px;height:7px;border-radius:50%;background:#E74C3C;animation:blink 1s infinite}
+.rs-dc{margin:12px;border:1.5px solid rgba(231,76,60,.5);border-radius:14px;background:#0F2A3D;overflow:hidden;animation:cardIn 9s infinite}
+@keyframes cardIn{0%,28%{transform:translateY(30px);opacity:0}36%,100%{transform:none;opacity:1}}
+.rs-dc .h{display:flex;gap:6px;align-items:center;padding:9px 10px;background:rgba(231,76,60,.1);font:700 11px var(--body);color:#E74C3C}
+.rs-dc .h span{margin-left:auto;font-size:7.5px;border:1px solid rgba(231,76,60,.4);padding:2px 6px;border-radius:5px}
+.rs-dc p{margin:0;padding:8px 10px 0;font-size:9.5px;color:rgba(255,255,255,.55)}
+.rs-claim{margin:10px;background:#E74C3C;border-radius:10px;padding:10px;text-align:center;font:700 10.5px var(--body);position:relative;animation:claim 9s infinite}
+@keyframes claim{0%,46%{background:#E74C3C;transform:none}50%{transform:scale(.95)}52%,100%{background:#E74C3C}}
+.rs-map{margin:0 12px;height:112px;border-radius:12px;background:#10283D;position:relative;overflow:hidden;opacity:0;animation:mapIn 9s infinite}
+@keyframes mapIn{0%,52%{opacity:0}60%,100%{opacity:1}}
+.rs-map svg{position:absolute;inset:0;width:100%;height:100%}
+.rs-me{position:absolute;width:22px;height:22px;border-radius:50%;background:#E74C3C;border:2px solid #fff;display:grid;place-items:center;font-size:11px;animation:drive 9s infinite}
+@keyframes drive{0%,56%{left:12%;top:70%}86%,100%{left:62%;top:30%}}
+.rs-st{display:flex;gap:6px;margin:10px 12px 0}
+.rs-st span{flex:1;text-align:center;padding:8px 0;border-radius:9px;font:700 9.5px var(--body);background:#1A3A52;color:rgba(255,255,255,.4);position:relative}
+.rs-st span:first-child{background:#E67E22;color:#fff;animation:s1 9s infinite}
+.rs-st span:last-child{animation:s2 9s infinite}
+@keyframes s1{0%,84%{background:#E67E22;color:#fff}88%,100%{background:#1A3A52;color:rgba(255,255,255,.4)}}
+@keyframes s2{0%,84%{background:#1A3A52}88%,100%{background:#2ECC71;color:#fff}}
+ 
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.15s}
+.mb-tv{margin-top:72px;border-top:1px solid var(--line);display:grid;grid-template-columns:56px 1fr auto;gap:22px;align-items:center;padding-top:30px}
+.mb-tv .glyph{width:56px;height:56px;border-radius:14px;background:rgba(255,255,255,.06);display:grid;place-items:center;font-size:26px;border:1px solid var(--line)}
+.mb-tv h3{font:700 19px var(--body)}
+.mb-tv p{color:var(--on-dark-2);font-size:15.5px;margin-top:2px;max-width:60ch}
+.btn-ghost.btn-off{background:rgba(255,255,255,.06);color:#8FA8BD;border-color:var(--line)}
+.mb-apk{margin-top:44px;max-width:760px;margin-inline:auto;text-align:center;font-size:14.5px;color:var(--on-dark-2);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:16px 20px}
+.mb-apk b{color:#fff}
+@media (max-width:980px){.mb-grid{grid-template-columns:1fr;gap:80px}.mb-tv{grid-template-columns:48px 1fr}.mb-tv .btn{grid-column:1/-1}}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
 </style>
 </head>
 
@@ -340,6 +454,7 @@ button{font:inherit}
     </a>
     <nav class="nav-links" aria-label="Sections">
       <a href="#features">What it does</a>
+      <a href="#mobile">Mobile apps</a>
       <a href="#install">Install</a>
       <a href="#faq">Questions</a>
     </nav>
@@ -635,27 +750,114 @@ button{font:inherit}
         <p class="safe">Only download R.A.I.D from this page or from your CDRRMO office.</p>
       </aside>
     </div>
+       </div>
+</section>
 
-    <div class="more">
-      <h2>Also part of R.A.I.D</h2>
-
-      <div class="more-row">
-        <div class="glyph" aria-hidden="true">📱</div>
-        <div>
-          <h3>Responder app for Android</h3>
-          <p>Field responders receive dispatch alerts and share their live location, which is what feeds the map you see on the desktop.</p>
+   <section class="section mobile" id="mobile">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>R.A.I.D in your pocket</h2>
+      <p>Two Android apps connect the public and the field to the same live dispatch you see on the desktop.</p>
+    </div>
+ 
+    <div class="mb-grid">
+ 
+      <!-- Citizen -->
+      <article class="mb-card cz rv">
+        <div class="phone-wrap">
+          <div class="phone" role="img" aria-label="Animated preview of the R.A.I.D Citizen app: a big red Report Emergency button, quick access tiles, hotlines and a Report sent confirmation.">
+            <div class="scr cz-scr">
+              <div class="cz-bar"><i>◉</i>R.A.I.D</div>
+              <div class="cz-hero"><b>Hello, Maria</b><small>Verified Citizen · Active</small></div>
+              <div class="cz-body">
+                <div class="cz-btn"><span class="ic">⚠️</span><div><b>REPORT EMERGENCY</b><small>Tap to alert the Passi City command center</small></div></div>
+                <div class="cz-q">
+                  <span style="background:#EBF5FB;color:#2471A3"><em>🕘</em>My Reports</span>
+                  <span style="background:#EAFAF1;color:#27AE60"><em>🗺️</em>Evacuation Map</span>
+                  <span style="background:#FEF9E7;color:#D68910"><em>📖</em>Safety Guide</span>
+                  <span style="background:#F5EEF8;color:#7D3C98"><em>☁️</em>Weather Alert</span>
+                </div>
+                <div class="cz-hot"><span class="ic">🛡️</span><div><b>CDRRMO Passi</b><small>Emergency hotline</small></div><span class="call">Call</span></div>
+                <div class="cz-tip">
+                  <span><b>SAFETY TIP</b>Know your barangay evacuation route in Passi City.</span>
+                  <span><b>SAFETY TIP</b>Drop, Cover, and Hold On during an earthquake.</span>
+                  <span><b>SAFETY TIP</b>Keep an emergency go-bag ready with 3-day supplies.</span>
+                </div>
+              </div>
+              <div class="cz-toast">✅ Report sent! Help is on the way.</div>
+            </div>
+          </div>
         </div>
-        <a class="btn btn-line btn-sm" id="dlAndroid" href="#">Download for Android</a>
-      </div>
-
-      <div class="more-row">
-        <div class="glyph" aria-hidden="true">📺</div>
-        <div>
-          <h3>Android TV monitor</h3>
-          <p>A wall-display view of incoming incidents for the operations room, built to be used with a TV remote.</p>
+        <span class="mb-tag">For citizens</span>
+        <h3>R.A.I.D Citizen</h3>
+        <p>Report an emergency in under a minute and follow responders as they head to you.</p>
+        <ul class="mb-list">
+          <li><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Send a report with your GPS location and photos</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Track responders live on a map once dispatched</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Evacuation map, safety guides and one-tap hotline</li>
+        </ul>
+        <div class="mb-dl">
+          <a class="btn btn-primary" id="dlCitizen" href="#">Download for Android</a>
+          <p class="mb-meta" id="metaCitizen"></p>
+          <p class="mb-sha" id="shaCitizen" hidden></p>
         </div>
-        <a class="btn btn-line btn-sm" id="dlTv" href="#">Download for Android TV</a>
+      </article>
+ 
+      <!-- Responder -->
+      <article class="mb-card rs rv d1">
+        <div class="phone-wrap">
+          <div class="phone" role="img" aria-label="Animated preview of the R.A.I.D Responder app: standby screen, an incoming dispatch card, claiming it, then status moving from En Route to On Scene.">
+            <div class="scr rs-scr">
+              <div class="rs-head"><div class="rs-av">🚒</div><div><b>Engine 1</b><small>BFP</small></div><span class="rs-on">● ONLINE</span></div>
+ 
+              <div class="rs-stand">
+                <div class="rs-orb">🚒</div>
+                <b>Standby · BFP</b>
+                <small>Monitoring for dispatch from<br>PCDRRMO Command Center</small>
+                <em>🔔 Notifications active</em>
+              </div>
+ 
+              <div class="rs-flow">
+                <div class="rs-ban"><i></i>1 ACTIVE DISPATCH · RESPOND IMMEDIATELY</div>
+                <div class="rs-dc">
+                  <div class="h">⚠ Fire Incident<span>Fire</span></div>
+                  <p>📍 Brgy. Poblacion, Passi City</p>
+                  <div class="rs-claim">🛡 Claim &amp; Respond</div>
+                </div>
+                <div class="rs-map">
+                  <svg viewBox="0 0 230 112" aria-hidden="true"><path d="M0 70H230M0 30H230M60 0V112M150 0V112" stroke="#1B4666" stroke-width="7" fill="none"/><circle cx="155" cy="36" r="9" fill="#E74C3C" stroke="#fff" stroke-width="2"/></svg>
+                  <div class="rs-me">🚒</div>
+                </div>
+                <div class="rs-st"><span>En Route</span><span>On Scene</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="mb-tag">For field responders</span>
+        <h3>R.A.I.D Responder</h3>
+        <p>Dispatch alerts for PNP, BFP and PRiDE units, with live GPS that feeds the desktop map.</p>
+        <ul class="mb-list">
+          <li><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Alerts arrive even when the app is closed</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Claim the dispatch, then mark En Route or On Scene</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Scene reports that save offline and sync later</li>
+        </ul>
+        <div class="mb-dl">
+          <a class="btn btn-primary" id="dlResponder" href="#">Download for Android</a>
+          <p class="mb-meta" id="metaResponder"></p>
+          <p class="mb-sha" id="shaResponder" hidden></p>
+        </div>
+      </article>
+    </div>
+ 
+    <p class="mb-apk rv"><b>Installing an Android app file (.apk):</b> open the downloaded file, and if Android asks, allow your browser or Files app to <b>install unknown apps</b>. Then tap <b>Install</b>. Only install files from this page or from your CDRRMO office.</p>
+ 
+    <div class="mb-tv rv">
+      <div class="glyph" aria-hidden="true">📺</div>
+      <div>
+        <h3>Android TV monitor</h3>
+        <p>A wall-display view of incoming incidents for the operations room, built to be used with a TV remote.</p>
       </div>
+      <a class="btn btn-ghost btn-sm" id="dlTv" href="#">Download for Android TV</a>
     </div>
   </div>
 </section>
