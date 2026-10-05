@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>R.A.I.D for Windows and Android | Passi City DRRMO</title>
-<meta name="description" content="Download and install R.A.I.D, the live dispatch and responder tracking system built for the Passi City Disaster Risk Reduction and Management Office. Windows desktop app plus Android Citizen and Responder apps.">
+<meta name="description" content="Download and install R.A.I.D, the live dispatch and responder tracking system built for the Passi City Disaster Risk Reduction and Management Office. Windows desktop app plus the Android Citizen app.">
 <meta name="theme-color" content="#071624">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230E2438'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%233A8DDE' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23E5483A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -227,8 +227,10 @@ button{font:inherit}
 .mobile::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(700px 420px at 20% 10%,rgba(31,88,132,.5),transparent 70%),radial-gradient(640px 400px at 90% 100%,rgba(229,72,58,.16),transparent 70%)}
 .mobile .sec-head h2{color:#fff}
 .mobile .sec-head p{color:var(--on-dark)}
-.mb-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:64px}
-.mb-card{display:flex;flex-direction:column;align-items:center;text-align:center}
+.mb-grid{display:block;margin-top:64px}
+.mb-card{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:96px;justify-items:start;align-content:center;max-width:1040px;margin-inline:auto}
+.mb-card .phone-col{grid-column:1;grid-row:1/7;align-self:center}
+.mb-card>:not(.phone-col){grid-column:2}
 .mb-tag{font:700 12px var(--body);letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;border-radius:999px;border:1px solid}
 .mb-card.cz .mb-tag{color:#7FE0AB;border-color:rgba(47,182,110,.5);background:rgba(47,182,110,.1)}
 .mb-card.rs .mb-tag{color:#FF9B90;border-color:rgba(229,72,58,.5);background:rgba(229,72,58,.1)}
@@ -256,15 +258,39 @@ button{font:inherit}
 .mb-tv p{color:var(--on-dark-2);font-size:15.5px;margin-top:2px;max-width:60ch}
 
 /* phone */
-.phone-wrap{position:relative;margin-bottom:36px;animation:float 6s ease-in-out infinite}
-.mb-card.rs .phone-wrap{animation-delay:-3s}
+.phone-col{--t:22s;display:flex;flex-direction:column;align-items:center}
+.phone-wrap{position:relative;margin-bottom:30px;animation:float 6s ease-in-out infinite}
 .phone-wrap::after{content:"";position:absolute;left:12%;right:12%;bottom:-26px;height:22px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.55),transparent);animation:shadow 6s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-14px)}}
 @keyframes shadow{50%{transform:scale(.85);opacity:.6}}
 .phone{position:relative;width:260px;height:520px;border-radius:40px;background:#050D16;border:9px solid #1C3248;overflow:hidden;box-shadow:0 50px 90px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.08),inset 0 0 0 1px rgba(255,255,255,.05);text-align:left}
 .phone::before{content:"";position:absolute;top:8px;left:50%;width:70px;height:18px;margin-left:-35px;border-radius:12px;background:#050D16;z-index:9}
-.scr{position:absolute;inset:0;font-family:var(--body)}
-.cz-scr{background:#F0F4F8;color:#1A2E3B}
+.stp{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+.stp span{position:relative;isolation:isolate;font:700 11.5px var(--body);color:#E6EEF5;padding:5px 12px;border-radius:99px;border:1px solid var(--line)}
+.stp span::before{content:"";position:absolute;inset:-1px;border-radius:inherit;background:var(--red);opacity:0;z-index:-1;animation-duration:var(--t);animation-iteration-count:infinite}
+.stp span:nth-child(1)::before{animation-name:st1}.stp span:nth-child(2)::before{animation-name:st2}.stp span:nth-child(3)::before{animation-name:st3}.stp span:nth-child(4)::before{animation-name:st4}
+@keyframes st1{0%,18%{opacity:1}20%,97%{opacity:0}99%,100%{opacity:1}}
+@keyframes st2{0%,18%{opacity:0}20%,54%{opacity:1}56%,100%{opacity:0}}
+@keyframes st3{0%,55%{opacity:0}57%,66%{opacity:1}68%,100%{opacity:0}}
+@keyframes st4{0%,67%{opacity:0}69%,96%{opacity:1}98%,100%{opacity:0}}
+
+/* scenes */
+.cz-s{position:absolute;inset:0;opacity:0;overflow:hidden;font-family:var(--body);color:#1A2E3B;animation:var(--t) ease infinite}
+.cz-s.s1{opacity:1;background:#F0F4F8;animation-name:czs1}
+.cz-s.s2{background:#F0F4F8;animation-name:czs2}
+.cz-s.s3{background:linear-gradient(160deg,#0B2537,#153650);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;animation-name:czs3}
+.cz-s.s4{background:#F0F4F8;animation-name:czs4}
+@keyframes czs1{0%,16%{opacity:1}19%,96%{opacity:0}99%,100%{opacity:1}}
+@keyframes czs2{0%,18%{opacity:0;transform:translateX(24px)}22%,52%{opacity:1;transform:none}56%,100%{opacity:0}}
+@keyframes czs3{0%,54%{opacity:0;transform:scale(.92)}58%,65%{opacity:1;transform:none}68%,100%{opacity:0}}
+@keyframes czs4{0%,66%{opacity:0}70%,95%{opacity:1}98%,100%{opacity:0}}
+.tap{position:absolute;width:36px;height:36px;margin:-18px 0 0 -18px;border-radius:50%;background:rgba(255,255,255,.6);border:2px solid #fff;box-shadow:0 0 0 6px rgba(231,76,60,.25);opacity:0;z-index:6;animation:var(--t) ease infinite}
+.tap.t1{left:50%;top:172px;animation-name:tap1}
+.tap.t2{left:50%;bottom:32px;animation-name:tap2}
+@keyframes tap1{0%,11%{opacity:0;transform:scale(1.7)}13%{opacity:1;transform:scale(1)}15%{transform:scale(.8)}17%,100%{opacity:0}}
+@keyframes tap2{0%,48%{opacity:0;transform:scale(1.7)}50%{opacity:1;transform:scale(1)}52%{transform:scale(.8)}54%,100%{opacity:0}}
+
+/* scene 1: home */
 .cz-bar{height:78px;background:#153650;color:#fff;padding:34px 14px 0;display:flex;align-items:center;gap:8px;font:900 14px var(--body);letter-spacing:.12em}
 .cz-bar i{width:20px;height:20px;border-radius:6px;background:rgba(255,255,255,.18);display:grid;place-items:center;font-style:normal;font-size:11px}
 .cz-hero{background:linear-gradient(135deg,#153650,#1A4A6B);color:#fff;padding:2px 14px 16px}
@@ -290,46 +316,84 @@ button{font:inherit}
 .cz-tip span:nth-child(2){animation-delay:3s}.cz-tip span:nth-child(3){animation-delay:6s}
 .cz-tip b{display:block;color:#FBBF24;font:900 7.5px var(--body);letter-spacing:.14em;margin-bottom:2px}
 @keyframes tip{0%{opacity:0;transform:translateY(5px)}6%,30%{opacity:1;transform:none}36%,100%{opacity:0}}
-.cz-toast{position:absolute;left:12px;right:12px;bottom:16px;background:#27AE60;color:#fff;border-radius:11px;padding:10px 12px;font:600 10.5px var(--body);display:flex;gap:8px;align-items:center;box-shadow:0 12px 24px -10px rgba(0,0,0,.5);animation:toast 9s infinite}
-@keyframes toast{0%,52%{opacity:0;transform:translateY(24px)}58%,78%{opacity:1;transform:none}84%,100%{opacity:0;transform:translateY(24px)}}
-.rs-scr{background:#0A1929;color:#fff}
-.rs-head{padding:34px 12px 11px;background:#0F2338;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:9px}
-.rs-av{width:32px;height:32px;border-radius:50%;background:rgba(231,76,60,.14);border:1.5px solid rgba(231,76,60,.6);display:grid;place-items:center;font-size:14px;animation:ringp 1.4s ease-in-out infinite alternate}
-@keyframes ringp{to{box-shadow:0 0 0 5px rgba(231,76,60,.12)}}
-.rs-head b{display:block;font-size:11.5px}
-.rs-head small{font:600 8.5px var(--body);color:#E74C3C}
-.rs-on{margin-left:auto;font:700 7.5px var(--body);color:#69F0AE;border:1px solid rgba(105,240,174,.3);background:rgba(27,94,32,.5);padding:3px 7px;border-radius:7px}
-.rs-stand{position:absolute;inset:78px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;animation:stand 9s infinite}
-@keyframes stand{0%,22%{opacity:1}30%,92%{opacity:0}100%{opacity:1}}
-.rs-orb{position:relative;width:78px;height:78px;border-radius:50%;background:rgba(231,76,60,.1);border:2px solid rgba(231,76,60,.4);display:grid;place-items:center;font-size:32px}
-.rs-orb::before,.rs-orb::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:1.5px solid rgba(231,76,60,.4);animation:orb 2.4s ease-out infinite}
-.rs-orb::after{animation-delay:1.2s}
-@keyframes orb{to{transform:scale(2);opacity:0}}
-.rs-stand b{font-size:15px}
-.rs-stand small{font-size:9.5px;color:rgba(255,255,255,.4);text-align:center;line-height:1.5}
-.rs-stand em{font:600 9px var(--body);font-style:normal;color:#69F0AE;border:1px solid rgba(46,125,50,.6);background:rgba(27,94,32,.25);padding:5px 11px;border-radius:99px}
-.rs-flow{position:absolute;inset:78px 0 0;opacity:0;animation:flow 9s infinite}
-@keyframes flow{0%,24%{opacity:0}30%,88%{opacity:1}94%,100%{opacity:0}}
-.rs-ban{padding:8px 12px;background:rgba(231,76,60,.08);border-bottom:1px solid rgba(231,76,60,.2);font:900 8px var(--body);letter-spacing:.08em;color:#E74C3C;display:flex;align-items:center;gap:7px}
-.rs-ban i{width:7px;height:7px;border-radius:50%;background:#E74C3C;animation:blink 1s infinite}
-.rs-dc{margin:12px;border:1.5px solid rgba(231,76,60,.5);border-radius:14px;background:#0F2A3D;overflow:hidden;animation:cardIn 9s infinite}
-@keyframes cardIn{0%,28%{transform:translateY(30px);opacity:0}36%,100%{transform:none;opacity:1}}
-.rs-dc .h{display:flex;gap:6px;align-items:center;padding:9px 10px;background:rgba(231,76,60,.1);font:700 11px var(--body);color:#E74C3C}
-.rs-dc .h span{margin-left:auto;font-size:7.5px;border:1px solid rgba(231,76,60,.4);padding:2px 6px;border-radius:5px}
-.rs-dc p{margin:0;padding:8px 10px 0;font-size:9.5px;color:rgba(255,255,255,.55)}
-.rs-claim{margin:10px;background:#E74C3C;border-radius:10px;padding:10px;text-align:center;font:700 10.5px var(--body);animation:claim 9s infinite}
-@keyframes claim{0%,46%{transform:none}50%{transform:scale(.95)}52%,100%{transform:none}}
-.rs-map{margin:0 12px;height:112px;border-radius:12px;background:#10283D;position:relative;overflow:hidden;opacity:0;animation:mapIn 9s infinite}
-@keyframes mapIn{0%,52%{opacity:0}60%,100%{opacity:1}}
-.rs-map svg{position:absolute;inset:0;width:100%;height:100%}
-.rs-me{position:absolute;width:22px;height:22px;border-radius:50%;background:#E74C3C;border:2px solid #fff;display:grid;place-items:center;font-size:11px;animation:drive 9s infinite}
-@keyframes drive{0%,56%{left:12%;top:70%}86%,100%{left:62%;top:30%}}
-.rs-st{display:flex;gap:6px;margin:10px 12px 0}
-.rs-st span{flex:1;text-align:center;padding:8px 0;border-radius:9px;font:700 9.5px var(--body);background:#1A3A52;color:rgba(255,255,255,.4)}
-.rs-st span:first-child{background:#E67E22;color:#fff;animation:s1 9s infinite}
-.rs-st span:last-child{animation:s2 9s infinite}
-@keyframes s1{0%,84%{background:#E67E22;color:#fff}88%,100%{background:#1A3A52;color:rgba(255,255,255,.4)}}
-@keyframes s2{0%,84%{background:#1A3A52}88%,100%{background:#2ECC71;color:#fff}}
+
+/* scene 2: report form */
+.fm-bar{height:64px;background:#E74C3C;color:#fff;padding:35px 14px 0;font:700 13px var(--body)}
+.fm-body{padding:10px 11px}
+.fm-l{display:flex;align-items:center;gap:6px;font:700 10px var(--body);margin:8px 0 5px}
+.fm-l i{width:15px;height:15px;border-radius:50%;background:#153650;color:#fff;display:grid;place-items:center;font:700 8px var(--body);font-style:normal}
+.fm-g{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.tl{background:#fff;border:1px solid #E2E8EE;border-radius:9px;padding:5px 0 4px;text-align:center;font:600 7.5px/1.25 var(--body);color:#4A5568}
+.tl.fire{animation:selTile var(--t) infinite}
+@keyframes selTile{0%,26%{background:#fff;color:#4A5568;border-color:#E2E8EE}28%,100%{background:#E74C3C;color:#fff;border-color:#E74C3C}}
+.fm-c{display:flex;flex-wrap:wrap;gap:5px}
+.ch{background:#fff;border:1px solid #D5DDE5;border-radius:99px;padding:3px 9px;font:600 8px var(--body);color:#4A5568}
+.ch.sel{animation:selChip var(--t) infinite}
+@keyframes selChip{0%,31%{background:#fff;color:#4A5568;border-color:#D5DDE5}33%,100%{background:#153650;color:#fff;border-color:#153650}}
+.fm-n{display:flex;align-items:center;justify-content:center;gap:14px;background:#FFFBEB;border:1px solid #F0D785;border-radius:10px;padding:4px 0}
+.fm-n u{width:20px;height:20px;border-radius:6px;background:#153650;color:#fff;display:grid;place-items:center;text-decoration:none;font:700 12px var(--body)}
+.fm-n div{position:relative;width:22px;height:24px}
+.fm-n b{position:absolute;inset:0;display:grid;place-items:center;font:700 19px var(--body);color:#D97706;opacity:0}
+.fm-n .n1{animation:nA var(--t) infinite}.fm-n .n2{animation:nB var(--t) infinite}.fm-n .n3{animation:nC var(--t) infinite}
+@keyframes nA{0%,33%{opacity:1}34%,100%{opacity:0}}
+@keyframes nB{0%,33%{opacity:0}34%,37%{opacity:1}38%,100%{opacity:0}}
+@keyframes nC{0%,37%{opacity:0}38%,100%{opacity:1}}
+.fm-in{background:#fff;border:1px solid #E2E8EE;border-radius:10px;padding:8px 9px;font:500 9.5px var(--body);white-space:nowrap;display:flex;align-items:center;gap:4px}
+.typ{display:inline-block;overflow:hidden;width:0;animation:typ var(--t) steps(27) infinite}
+@keyframes typ{0%,40%{width:0}46%,100%{width:142px}}
+.fm-gps{margin-top:6px;background:#EAFAF1;border:1px solid #BBE5CC;border-radius:8px;padding:4px 8px;font:600 8px var(--body);color:#27AE60;opacity:0;animation:gps var(--t) infinite}
+@keyframes gps{0%,46%{opacity:0}48%,100%{opacity:1}}
+.fm-send{position:absolute;left:11px;right:11px;bottom:14px;height:36px;border-radius:11px;background:#E74C3C;color:#fff;display:grid;place-items:center;font:700 10px var(--body);letter-spacing:.04em;box-shadow:0 8px 16px -8px rgba(231,76,60,.7);animation:press var(--t) infinite}
+@keyframes press{0%,50%{transform:none}51.5%{transform:scale(.94)}53%,100%{transform:none}}
+
+/* scene 3: sent */
+.ok{position:relative;width:70px;height:70px;border-radius:50%;background:#27AE60;display:grid;place-items:center;font-size:34px;font-weight:700;margin-bottom:14px;animation:okpop var(--t) infinite}
+.ok::before,.ok::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #27AE60;animation:okring 1.8s ease-out infinite}
+.ok::after{animation-delay:.9s}
+@keyframes okpop{0%,56%{transform:scale(0)}59%{transform:scale(1.15)}61%,100%{transform:scale(1)}}
+@keyframes okring{to{transform:scale(2);opacity:0}}
+.s3>b{font:800 22px var(--body)}
+.s3>small{font-size:11px;color:#B9C8D6;margin-top:2px}
+.okc{margin-top:18px;width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:11px 12px;text-align:left}
+.okc b{display:block;font:700 12px var(--body)}
+.okc small{display:block;font-size:9px;color:#8FA8BD;margin-bottom:6px}
+.okc p{margin:0;padding:6px 0;border-top:1px solid rgba(255,255,255,.08);font:500 9.5px var(--body);color:#DCEAF5;opacity:0}
+.okc .r1{animation:r1 var(--t) infinite}.okc .r2{animation:r2 var(--t) infinite;color:#F2A93B}
+@keyframes r1{0%,59%{opacity:0}61%,100%{opacity:1}}
+@keyframes r2{0%,62%{opacity:0}64%,100%{opacity:1}}
+
+/* scene 4: track */
+.tr-bar{height:64px;background:#153650;color:#fff;padding:35px 14px 0;font:700 13px var(--body)}
+.tr-head{margin:10px 11px 0;background:#fff;border-radius:11px;padding:8px 10px;display:flex;align-items:center;gap:8px;box-shadow:0 4px 10px -6px rgba(0,0,0,.3)}
+.tr-head b{display:block;font:700 10.5px var(--body)}
+.tr-head small{font-size:8.5px;color:#8A9DB0}
+.tr-st{margin-left:auto;display:grid;font:700 8.5px var(--body)}
+.tr-st span{grid-area:1/1;padding:3px 9px;border-radius:99px;text-align:center}
+.tr-st .sn{background:#FDEDEC;color:#E74C3C;animation:sN var(--t) infinite}
+.tr-st .sd{background:#EBF5FB;color:#2471A3;animation:sD var(--t) infinite}
+@keyframes sN{0%,71%{opacity:1}72%,100%{opacity:0}}
+@keyframes sD{0%,71%{opacity:0}72%,100%{opacity:1}}
+.tr-map{position:relative;margin:9px 11px 0;height:150px;border-radius:12px;background:#E6EEF4;overflow:hidden;border:1px solid #D5DEE6}
+.tr-map svg{position:absolute;inset:0;width:100%;height:100%}
+.pin,.un{position:absolute;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;border:2px solid #fff;font-size:11px;box-shadow:0 3px 8px -2px rgba(0,0,0,.4)}
+.pin{left:139px;top:34px;background:#E74C3C;color:#fff;font-weight:800}
+.pin::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:2px solid #E74C3C;animation:orb 1.8s ease-out infinite}
+@keyframes orb{to{transform:scale(2.6);opacity:0}}
+.un{background:#fff}
+.u1{border-color:#E74C3C;animation:drv1 var(--t) linear infinite;left:0;top:89px}
+.u2{border-color:#27AE60;animation:drv2 var(--t) linear infinite;left:200px;top:34px}
+@keyframes drv1{0%,70%{left:0;top:89px}82%{left:139px;top:89px}91%,100%{left:139px;top:60px}}
+@keyframes drv2{0%,70%{left:200px;top:34px}90%,100%{left:166px;top:34px}}
+.tr-l{margin:9px 11px 0;background:#fff;border-radius:11px;box-shadow:0 4px 10px -6px rgba(0,0,0,.3)}
+.tr-r{display:flex;align-items:center;gap:8px;padding:8px 10px;font:600 10px var(--body)}
+.tr-r+.tr-r{border-top:1px solid #EEF2F5}
+.tr-r small{display:block;font:500 8.5px var(--body);color:#8A9DB0}
+.tr-e{margin-left:auto;display:grid;font:700 8.5px var(--body)}
+.tr-e span{grid-area:1/1;padding:3px 8px;border-radius:99px;text-align:center;white-space:nowrap}
+.tr-e .en{background:#FFF6E5;color:#B9770E;animation:eA var(--t) infinite}
+.tr-e .on{background:#EAF8F0;color:#1E8F52;animation:eB var(--t) infinite}
+@keyframes eA{0%,91%{opacity:1}92%,100%{opacity:0}}
+@keyframes eB{0%,91%{opacity:0}92%,100%{opacity:1}}
 
 /* reveal on scroll */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
@@ -368,7 +432,9 @@ button{font:inherit}
   .explorer,.install-grid,.faq-wrap{grid-template-columns:1fr;gap:44px}
   .stage,.console{position:static}
   .console{order:-1}
-  .mb-grid{grid-template-columns:1fr;gap:80px}
+  .mb-card{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .mb-card .phone-col{grid-row:auto}
+  .mb-card>:not(.phone-col){grid-column:1}
   .mb-tv{grid-template-columns:48px 1fr}
   .mb-tv .btn{grid-column:1/-1}
   .footer .wrap{grid-template-columns:1fr}
@@ -411,7 +477,7 @@ button{font:inherit}
     <nav class="nav-links" aria-label="Sections">
       <a href="#features">What it does</a>
       <a href="#install">Install</a>
-      <a href="#mobile">Mobile apps</a>
+      <a href="#mobile">Mobile app</a>
       <a href="#faq">Questions</a>
     </nav>
     <a class="btn btn-primary btn-sm" data-download href="#install">
@@ -437,14 +503,14 @@ button{font:inherit}
   <div class="wrap hero-grid">
     <div>
       <h1>Every dispatch, from first report to arrival, on one screen.</h1>
-      <p class="lead">R.A.I.D gives the Passi City DRRMO a live view of citizen reports, dispatches and responders. Install it on your desk PC in about two minutes, and get the Android apps for citizens and field responders.</p>
+      <p class="lead">R.A.I.D gives the Passi City DRRMO a live view of citizen reports, dispatches and responders. Install it on your desk PC in about two minutes, and let residents report emergencies from their phones with the Android app.</p>
 
       <div class="hero-actions">
         <a class="btn btn-primary" data-download href="#install">
           <svg width="19" height="19" viewBox="0 0 18 18" aria-hidden="true"><path fill="currentColor" d="M0 2.6 7.4 1.6v6.2H0zM8.4 1.5 18 0v7.8H8.4zM0 8.8h7.4v6.2L0 14zM8.4 8.8H18V17l-9.6-1.4z"/></svg>
           Download for Windows
         </a>
-        <a class="btn btn-ghost" href="#mobile">Get the Android apps</a>
+        <a class="btn btn-ghost" href="#mobile">Get the Android app</a>
       </div>
 
       <ul class="assure">
@@ -453,7 +519,7 @@ button{font:inherit}
         <li><svg width="17" height="17" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>No administrator password needed</li>
       </ul>
 
-      <p class="os-note" data-nonwin hidden>You're not on a Windows PC. The desktop app installs on Windows 10 or 11, so open this page on that computer to download it. The Android apps are further down the page.</p>
+      <p class="os-note" data-nonwin hidden>You're not on a Windows PC. The desktop app installs on Windows 10 or 11, so open this page on that computer to download it. The Android app is further down the page.</p>
     </div>
 
     <!-- live dispatch demo -->
@@ -689,36 +755,94 @@ button{font:inherit}
   <div class="wrap">
     <div class="sec-head rv">
       <h2>R.A.I.D in your pocket</h2>
-      <p>Two Android apps connect the public and the field to the same live dispatch you see on the desktop.</p>
+      <p>The Citizen app lets anyone in Passi City report an emergency in under a minute, then follow responders live on the map.</p>
     </div>
 
     <div class="mb-grid">
 
       <!-- Citizen -->
       <article class="mb-card cz rv" data-app="citizen">
-        <div class="phone-wrap">
-          <div class="phone" role="img" aria-label="Animated preview of the R.A.I.D Citizen app: a big red Report Emergency button, quick access tiles, hotlines and a Report sent confirmation.">
-            <div class="scr cz-scr">
-              <div class="cz-bar"><i>◉</i>R.A.I.D</div>
-              <div class="cz-hero"><b>Hello, Maria</b><small>Verified Citizen · Active</small></div>
-              <div class="cz-body">
-                <div class="cz-btn"><span class="ic">⚠️</span><div><b>REPORT EMERGENCY</b><small>Tap to alert the Passi City command center</small></div></div>
-                <div class="cz-q">
-                  <span style="background:#EBF5FB;color:#2471A3"><em>🕘</em>My Reports</span>
-                  <span style="background:#EAFAF1;color:#27AE60"><em>🗺️</em>Evacuation Map</span>
-                  <span style="background:#FEF9E7;color:#D68910"><em>📖</em>Safety Guide</span>
-                  <span style="background:#F5EEF8;color:#7D3C98"><em>☁️</em>Weather Alert</span>
+        <div class="phone-col">
+          <div class="phone-wrap">
+            <div class="phone" role="img" aria-label="Animated preview of the R.A.I.D Citizen app: tap Report Emergency, choose the type of emergency, how many people and the location, send the report, then follow responders live on the map.">
+
+              <!-- 1 home -->
+              <div class="cz-s s1">
+                <div class="cz-bar"><i>◉</i>R.A.I.D</div>
+                <div class="cz-hero"><b>Hello, Maria</b><small>Verified Citizen · Active</small></div>
+                <div class="cz-body">
+                  <div class="cz-btn"><span class="ic">⚠️</span><div><b>REPORT EMERGENCY</b><small>Tap to alert the Passi City command center</small></div></div>
+                  <div class="cz-q">
+                    <span style="background:#EBF5FB;color:#2471A3"><em>🕘</em>My Reports</span>
+                    <span style="background:#EAFAF1;color:#27AE60"><em>🗺️</em>Evacuation Map</span>
+                    <span style="background:#FEF9E7;color:#D68910"><em>📖</em>Safety Guide</span>
+                    <span style="background:#F5EEF8;color:#7D3C98"><em>☁️</em>Weather Alert</span>
+                  </div>
+                  <div class="cz-hot"><span class="ic">🛡️</span><div><b>CDRRMO Passi</b><small>Emergency hotline</small></div><span class="call">Call</span></div>
+                  <div class="cz-tip">
+                    <span><b>SAFETY TIP</b>Know your barangay evacuation route in Passi City.</span>
+                    <span><b>SAFETY TIP</b>Drop, Cover, and Hold On during an earthquake.</span>
+                    <span><b>SAFETY TIP</b>Keep an emergency go-bag ready with 3-day supplies.</span>
+                  </div>
                 </div>
-                <div class="cz-hot"><span class="ic">🛡️</span><div><b>CDRRMO Passi</b><small>Emergency hotline</small></div><span class="call">Call</span></div>
-                <div class="cz-tip">
-                  <span><b>SAFETY TIP</b>Know your barangay evacuation route in Passi City.</span>
-                  <span><b>SAFETY TIP</b>Drop, Cover, and Hold On during an earthquake.</span>
-                  <span><b>SAFETY TIP</b>Keep an emergency go-bag ready with 3-day supplies.</span>
+                <div class="tap t1"></div>
+              </div>
+
+              <!-- 2 report form -->
+              <div class="cz-s s2">
+                <div class="fm-bar">Report Emergency</div>
+                <div class="fm-body">
+                  <div class="fm-l"><i>1</i>What is happening?</div>
+                  <div class="fm-g">
+                    <span class="tl">🚗<br>Vehicular</span><span class="tl">❤️<br>Medical</span><span class="tl fire">🔥<br>Fire</span>
+                    <span class="tl">🌊<br>Flood</span><span class="tl">🏊<br>Drowning</span><span class="tl">❓<br>Other</span>
+                  </div>
+                  <div class="fm-l"><i>2</i>What kind specifically?</div>
+                  <div class="fm-c"><span class="ch sel">House / Structure Fire</span><span class="ch">Vehicle Fire</span><span class="ch">Grass Fire</span></div>
+                  <div class="fm-l"><i>3</i>How many people involved?</div>
+                  <div class="fm-n"><u>−</u><div><b class="n1">1</b><b class="n2">2</b><b class="n3">3</b></div><u>+</u></div>
+                  <div class="fm-l"><i>4</i>Where is it?</div>
+                  <div class="fm-in">📍<span class="typ">Brgy. Poblacion, Passi City</span></div>
+                  <div class="fm-gps">📍 Location acquired · 11.1037, 122.6383</div>
+                </div>
+                <div class="fm-send">➤ SEND EMERGENCY REPORT</div>
+                <div class="tap t2"></div>
+              </div>
+
+              <!-- 3 sent -->
+              <div class="cz-s s3">
+                <div class="ok">✓</div>
+                <b>Report sent!</b>
+                <small>Help is on the way.</small>
+                <div class="okc">
+                  <b>Fire Incident</b><small>Brgy. Poblacion, Passi City · 3 person(s)</small>
+                  <p class="r1">✅ Received by the command center</p>
+                  <p class="r2">🚨 Dispatching nearby units…</p>
                 </div>
               </div>
-              <div class="cz-toast">✅ Report sent! Help is on the way.</div>
+
+              <!-- 4 track -->
+              <div class="cz-s s4">
+                <div class="tr-bar">Track Responders</div>
+                <div class="tr-head">
+                  <div><b>Fire Incident</b><small>Brgy. Poblacion, Passi City</small></div>
+                  <div class="tr-st"><span class="sn">New</span><span class="sd">Dispatched</span></div>
+                </div>
+                <div class="tr-map">
+                  <svg viewBox="0 0 222 150" aria-hidden="true"><path d="M0 45H222M0 100H222M50 0V150M150 0V150" stroke="#fff" stroke-width="9" fill="none"/><path d="M0 130C60 110 120 140 222 120" stroke="#BFD9EA" stroke-width="12" fill="none"/></svg>
+                  <div class="pin">!</div>
+                  <div class="un u1">🚒</div>
+                  <div class="un u2">🚑</div>
+                </div>
+                <div class="tr-l">
+                  <div class="tr-r">🚒<div>BFP engine<small>Heading to the scene</small></div><div class="tr-e"><span class="en">En Route</span><span class="on">On Scene</span></div></div>
+                  <div class="tr-r">🚑<div>PRiDE ambulance<small>Heading to the scene</small></div><div class="tr-e"><span class="en">En Route</span><span class="on">On Scene</span></div></div>
+                </div>
+              </div>
+
             </div>
           </div>
+          <div class="stp" aria-hidden="true"><span>1 Tap report</span><span>2 Add details</span><span>3 Sent</span><span>4 Track help</span></div>
         </div>
         <span class="mb-tag">For citizens</span>
         <h3>R.A.I.D Citizen</h3>
@@ -752,65 +876,6 @@ button{font:inherit}
         </div>
       </article>
 
-      <!-- Responder -->
-      <article class="mb-card rs rv d1" data-app="responder">
-        <div class="phone-wrap">
-          <div class="phone" role="img" aria-label="Animated preview of the R.A.I.D Responder app: standby screen, an incoming dispatch card, claiming it, then status moving from En Route to On Scene.">
-            <div class="scr rs-scr">
-              <div class="rs-head"><div class="rs-av">🚒</div><div><b>Engine 1</b><small>BFP</small></div><span class="rs-on">● ONLINE</span></div>
-              <div class="rs-stand">
-                <div class="rs-orb">🚒</div>
-                <b>Standby · BFP</b>
-                <small>Monitoring for dispatch from<br>PCDRRMO Command Center</small>
-                <em>🔔 Notifications active</em>
-              </div>
-              <div class="rs-flow">
-                <div class="rs-ban"><i></i>1 ACTIVE DISPATCH · RESPOND IMMEDIATELY</div>
-                <div class="rs-dc">
-                  <div class="h">⚠ Fire Incident<span>Fire</span></div>
-                  <p>📍 Brgy. Poblacion, Passi City</p>
-                  <div class="rs-claim">🛡 Claim &amp; Respond</div>
-                </div>
-                <div class="rs-map">
-                  <svg viewBox="0 0 230 112" aria-hidden="true"><path d="M0 70H230M0 30H230M60 0V112M150 0V112" stroke="#1B4666" stroke-width="7" fill="none"/><circle cx="155" cy="36" r="9" fill="#E74C3C" stroke="#fff" stroke-width="2"/></svg>
-                  <div class="rs-me">🚒</div>
-                </div>
-                <div class="rs-st"><span>En Route</span><span>On Scene</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <span class="mb-tag">For field responders</span>
-        <h3>R.A.I.D Responder</h3>
-        <p>Dispatch alerts for PNP, BFP and PRiDE units, with live GPS that feeds the desktop map.</p>
-        <ul class="mb-list">
-          <li><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Alerts arrive even when the app is closed</li>
-          <li><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Claim the dispatch, then mark En Route or On Scene</li>
-          <li><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Scene reports that save offline and sync later</li>
-        </ul>
-
-        <div class="mb-box">
-          <h4>R.A.I.D Responder for Android</h4>
-          <div class="mb-file" data-f="fileName">RAID-Responder.apk</div>
-          <dl class="mb-facts">
-            <div><dt>Version</dt><dd data-f="version">1.0.0</dd></div>
-            <div data-row="released"><dt>Released</dt><dd data-f="released"></dd></div>
-            <div data-row="size"><dt>Size</dt><dd data-f="size"></dd></div>
-            <div><dt>Works on</dt><dd>Android 8.0 or newer</dd></div>
-            <div><dt>Needs</dt><dd>Internet, GPS, notifications</dd></div>
-          </dl>
-          <a class="btn btn-primary" id="dlResponder" href="#">
-            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3v12m0 0l-5-5m5 5l5-5M5 20h14" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Download for Android</span>
-          </a>
-          <p class="mb-sha" data-f-sha hidden></p>
-          <ol class="mb-steps">
-            <li><b>Download</b> the file and open it.</li>
-            <li>If asked, allow <b>install unknown apps</b>.</li>
-            <li>Tap <b>Install</b>, open R.A.I.D, and allow <b>location</b> and <b>notifications</b> so dispatches reach you.</li>
-          </ol>
-        </div>
-      </article>
     </div>
 
     <p class="mb-apk rv"><b>Installing an Android app file (.apk):</b> open the downloaded file, and if Android asks, allow your browser or Files app to <b>install unknown apps</b>. Then tap <b>Install</b>. Only install files from this page or from your CDRRMO office.</p>
@@ -852,10 +917,6 @@ button{font:inherit}
       <details>
         <summary>Android says it can't install the app. What now?</summary>
         <p>Open the downloaded file and, when Android asks, allow your browser or Files app to install unknown apps. Then tap Install. Only do this for files from this page or from your CDRRMO office.</p>
-      </details>
-      <details>
-        <summary>Which phone app do I need?</summary>
-        <p>Residents use R.A.I.D Citizen to report emergencies and follow responders. Field units from PNP, BFP and PRiDE use R.A.I.D Responder to receive dispatches and share their live location.</p>
       </details>
       <details>
         <summary>How do I update to a newer version?</summary>
@@ -902,20 +963,12 @@ const CONFIG = {
     sha256: ""     // paste the SHA-256 to show the "Check your download" box
   },
   citizen: {
-    url: "https://github.com/rhenzu/RAIDInstaller/releases/download/Application/RAID_1.0.0.apk",       // e.g. "downloads/RAID-Citizen.apk"  (button shows "Coming soon" while empty)
+    url: "https://github.com/rhenzu/RAIDInstaller/releases/download/Application/RAID_1.0.0.apk",
     fileName: "RAID_1.0.0.apk",
     version: "1.0.0",
     released: "September 2026",
-    size: "",      // e.g. "38 MB"  (row is hidden while empty)
+    size: "",      // e.g. "130 MB"  (row is hidden while empty)
     sha256: ""     // optional: shows a checksum under the button
-  },
-  responder: {
-    url: "https://github.com/rhenzu/RAIDInstaller/releases/download/Responder/RAID-Responder.apk",       // e.g. "downloads/RAID-Responder.apk"
-    fileName: "RAID-Responder.apk",
-    version: "1.0.0",
-    released: "September 2026",
-    size: "",
-    sha256: ""
   },
   tv:      { url: "" },   // e.g. "downloads/RAID-TV.apk"
   supportEmail: ""        // e.g. "cdrrmo@example.gov.ph"  (footer link is hidden while empty)
@@ -974,7 +1027,6 @@ const CONFIG = {
     }
   }
   wireApp($('[data-app="citizen"]'),   CONFIG.citizen,   '#dlCitizen');
-  wireApp($('[data-app="responder"]'), CONFIG.responder, '#dlResponder');
 
   /* ── Android TV ── */
   (function () {
